@@ -17,48 +17,48 @@
             <el-table-column prop="tel" label="手机号码">
             </el-table-column>
             <el-table-column label="民族">
-                <template scope="scope">
+                <template slot-scope="scope">
                     {{scope.row.nationality === 'chinese' ? '汉族' : scope.row.nationality === 'huihui' ? '回族' : '其他'}}
                 </template>
             </el-table-column>
             <el-table-column label="面试时间">
-                <template scope="scope">
+                <template slot-scope="scope">
                     {{new Date(scope.row.interview).getMonth() + '/' + new Date(scope.row.interview).getDate() + ' ' + new Date(scope.row.interview).getHours() + ':' + new Date(scope.row.interview).getMinutes()}}
                 </template>
             </el-table-column>
             <el-table-column prop="impressionScore" sortable label="印象分">
-                <template scope="scope">
+                <template slot-scope="scope">
                     {{scope.row.impressionScore}}
                 </template>
             </el-table-column>
             <el-table-column prop="techScore" sortable label="技术分">
-                <template scope="scope">
+                <template slot-scope="scope">
                     {{scope.row.techScore}}
                 </template>
             </el-table-column>
             <el-table-column prop="integratedScore" sortable label="综合分">
-                <template scope="scope">
+                <template slot-scope="scope">
                     {{scope.row.integratedScore}}
                 </template>
             </el-table-column>
             <el-table-column label="加权总分">
-                <template scope="scope">
+                <template slot-scope="scope">
                     {{scope.row.integratedScore * 0.5 + scope.row.techScore * 0.2 + scope.row.impressionScore * 0.3}}
                 </template>
             </el-table-column>
             <el-table-column prop="block" sortable label="黑名单">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-tag :type="scope.row.block?'danger':'gray'">{{scope.row.block ? '是' : '否'}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column prop="pass" sortable label="钦点">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-tag :type="scope.row.pass?'success':'gray'">{{scope.row.pass ? '是' : '否'}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column
                 label="操作" width="180">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button size="small" icon="edit"
                                @click="handleEdit(scope.$index, scope.row)">面试
                     </el-button>

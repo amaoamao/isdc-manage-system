@@ -28,7 +28,7 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-            '/backend/api': {
+            '/api': {
                 target: 'https://www.scuisdc.org',
                 changeOrigin: true
             }

@@ -31,7 +31,7 @@
             </el-table-column>
             <el-table-column
                 label="操作" width="180">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button size="small" icon="edit"
                                @click="handleEdit(scope.$index, scope.row)">编辑
                     </el-button>
@@ -130,7 +130,7 @@
             },
             updateDevice(form) {
                 this.$http.post(this.url, form).then(res => res.json().then((data) => {
-                    if (data.code == 200) {
+                    if (data.code === 200) {
                         this.getData();
                         this.updateDialogFormVisible = false;
                         this.$message.success('更新成功');
@@ -142,7 +142,7 @@
                 }), err => this.$message.error('更新出错'));
             }, putDevice(form) {
                 this.$http.put(this.url, form).then((form) => form.json().then((data) => {
-                    if (data.code == 200) {
+                    if (data.code === 200) {
                         this.putDialogFormVisible = false;
                         this.$message.success('添加成功');
                         /*   Vue.set(this.tableData,this.editing,form);*/
@@ -154,12 +154,12 @@
                 }), err => this.$message.error('添加出错'));
             }, delDevice(index, row) {
 
-                var con = confirm("确定删除题目:\"" + this.tableData[index].title + "\"吗?");
-                if (con == true) {
+                let con = confirm("确定删除题目:\"" + this.tableData[index].title + "\"吗?");
+                if (con) {
                     this.form = JSON.parse(JSON.stringify(this.tableData[index]));
                     //alert(this.form.userName);
                     this.$http.delete(this.url+"/"+this.tableData[index].id).then(form => form.json().then(data => {
-                        if (data.code == 200) {
+                        if (data.code === 200) {
                             this.$message.success('删除成功');
                             this.getData();
                         }
